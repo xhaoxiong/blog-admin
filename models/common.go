@@ -38,6 +38,7 @@ func AddAdmin() {
 	var password string
 	fmt.Scanf("%s", &password)
 	user.Username = name
+	user.Password = password
 	user.LastLoginTime = time.Now()
 	user.LastLoginIP = "127.0.0.1"
 	if err := DB.Create(&user).Error; err != nil {

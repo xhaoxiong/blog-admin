@@ -74,7 +74,7 @@ func (this *AdminController) SaveAxis() {
 		return
 	}
 
-	err := ioutil.WriteFile("/var/www/server/static/axis"+strconv.Itoa(int(axis.Id))+".txt", []byte(article.Content), 0777)
+	err := ioutil.WriteFile("/var/www/server/static/ais"+strconv.Itoa(int(axis.Id))+".txt", []byte(axis.Content), 0777)
 
 	if err != nil {
 		log.Println("write file error:", err)

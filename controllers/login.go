@@ -16,7 +16,7 @@ func (this *AdminCommonController) Logout() {
 
 // @router /api/admin/login [*]
 func (this *AdminCommonController) AdminLogin() {
-	CaptchaInterceptor(&this.Common)
+	//CaptchaInterceptor(&this.Common)
 	username := this.GetString("username")
 	password := this.GetString("password")
 

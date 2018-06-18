@@ -7,6 +7,8 @@ import (
 )
 
 func init() {
+	beego.Include(&controllers.AdminController{},
+		&controllers.AdminCommonController{})
 
 	beego.Router("/api/ueditor_controller", &controllers.Ueditor{}, "*:U_Controller")
 	beego.SetStaticPath("/upload", "upload")
