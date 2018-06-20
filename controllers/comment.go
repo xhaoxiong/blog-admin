@@ -48,11 +48,12 @@ func (this *AdminController) CommentsDetail() {
 	}
 
 	comment.ContentDetail = string(data)
+	models.DB.Save(&comment)
 
 	this.ReturnSuccess("comment", comment)
 }
 
-// @router /api/admin/article/delete [*]
+// @router /api/admin/comment/delete [*]
 func (this *AdminController) DeleteComment() {
 	var comment models.Comment
 	if _, err := this.GetByID(&comment); err != nil {

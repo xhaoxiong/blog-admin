@@ -39,7 +39,7 @@ func (this *AdminController) ArticleDetail() {
 		return
 	}
 
-	data, err := ioutil.ReadFile("/var/www/server/static/article" + strconv.Itoa(int(article.Id)) + ".txt")
+	data, err := ioutil.ReadFile("/var/www/server/static/" + article.Text)
 
 	if err != nil {
 		log.Println("read article file error")
@@ -75,6 +75,13 @@ func (this *AdminController) SaveArticle() {
 	}
 
 	err := ioutil.WriteFile("/var/www/server/static/article"+strconv.Itoa(int(article.Id))+".txt", []byte(article.Content), 0777)
+
+	article.Text = "article" + strconv.Itoa(int(article.Id)) + ".txt"
+
+	if err := models.DB.Save(&article).Error; err != nil {
+		this.ReturnJson(10003, "article save error")
+		return
+	}
 
 	if err != nil {
 		log.Println("write file error:", err)

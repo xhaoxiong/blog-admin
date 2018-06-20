@@ -2,15 +2,15 @@ package models
 
 type Article struct {
 	Id         int64
-	Title      string `form:"title"`
-	Name       string `form:"name"`
-	Ps         string `form:"ps"`
-	Text       string `form:"text"`
-	Date       string `form:"date"`
-	Reading    int    `form:"reading"`
-	Agree      int    `form:"agree"`
-	Delete     int    `form:"delete"`
-	Exhibition int    `form:"exhibition"`
-	Type       int    `form:"type"`
-	Content    string `form:"content";gorm:"type:longtext"`
+	Title      string `form:"Title"`
+	Name       string `form:"Name"`
+	Ps         string `form:"Ps"`
+	Text       string `form:"Text"`
+	Date       string `form:"Date"`
+	Reading    int    `form:"Reading"`
+	Agree      int    `form:"Agree"`
+	Delete     int    `form:"Delete"`
+	Exhibition int    `form:"Exhibition"`
+	Type       int    `form:"Type"`
+	Content    string `form:"Content";gorm:"type:longtext"`
 }

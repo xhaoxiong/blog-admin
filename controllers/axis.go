@@ -47,7 +47,7 @@ func (this *AdminController) AxisDetail() {
 		return
 	}
 
-	axis.Content = string(data)
+	axis.ContentDetail = string(data)
 
 	this.ReturnSuccess("axis", axis)
 }
@@ -74,7 +74,14 @@ func (this *AdminController) SaveAxis() {
 		return
 	}
 
-	err := ioutil.WriteFile("/var/www/server/static/ais"+strconv.Itoa(int(axis.Id))+".txt", []byte(axis.Content), 0777)
+	err := ioutil.WriteFile("/var/www/server/static/axis"+strconv.Itoa(int(axis.Id))+".txt", []byte(axis.ContentDetail), 0777)
+
+	axis.Content = "axis" + strconv.Itoa(int(axis.Id)) + ".txt"
+
+	if err := models.DB.Save(&axis).Error; err != nil {
+		this.ReturnJson(10003, "axis save error")
+		return
+	}
 
 	if err != nil {
 		log.Println("write file error:", err)
