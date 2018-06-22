@@ -71,3 +71,9 @@ func (this *Common) ReturnSuccess(args ...interface{}) {
 func (this *AdminCommonController) AdminIndex() {
 	this.TplName = "admin/index.html"
 }
+
+//@router / [*]
+func (this *AdminCommonController) RedirectAdmin() {
+	this.Redirect("/admin/", 302)
+	return
+}
